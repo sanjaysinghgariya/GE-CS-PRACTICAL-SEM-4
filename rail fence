@@ -1,0 +1,61 @@
+##RAIL FENCE encrptrd
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it
+text = "sanjaysinghgariya"
+key = 3
+
+def cipher(text, key):
+    result = ""
+    matrix = [[""for x in range(len(text))]for y in range(key)]
+
+    increment = 1
+    row = 0
+    col = 0
+    for c in text:
+        print("r",row)
+        print("c",col)
+        print("w", c)
+        print("increment",increment)
+        matrix[row][col] = c
+        print(matrix)
+        if row+increment<0 or row+increment>=len(matrix):
+            increment=increment*-1
+        row += increment
+        col += 1
+    for list in matrix:
+        result +="".join(list)
+    print(result)
+    
+    
+    #decrption
+    
+import numpy as np
+def decrpt(cipher_text, key):
+    result2 = ""
+    matrix = [[""for x in range(len(cipher_text))]for y in range(key)]
+    matrix
+    
+    idx = 0
+    
+    increment = 1
+    for selectedrow in range(0, len(matrix)):
+        print("selectedrow",selectedrow)
+        row = 0
+        print("matrix row",len(matrix[row]))
+        for col in range(0, len(matrix[row])):
+            print("col",col)
+            print("row1", row)
+            if row + increment < 0 or row+increment >= len(matrix):
+                increment = increment*-1
+            if row == selectedrow:
+                print("r",row)
+                print("idx", idx)
+                matrix[row][col] += cipher_text[idx]
+                print(matrix)
+                idx+=1
+            row += increment
+            print(increment)
+    matrix = np.transpose(matrix)
+    for list in matrix:
+         result2 +="".join(list)
+    return result2
